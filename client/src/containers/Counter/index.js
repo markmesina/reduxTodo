@@ -41,9 +41,11 @@ class Counter extends Component {
   }
 }
 
+// This takes a key which is what we want the states name to be as props
+// The value is what state we want to pull out from the store
 function mapStateToProps(state) {
   return { counter: state.counter };
 };
-
-
-export default connect(mapStateToProps, { increment })(Counter);
+// 2nd parameter to connect is what actions we want wired up to this component
+// To be sent to all of our reducers
+export default  connect(mapStateToProps, { increment })(Counter);
