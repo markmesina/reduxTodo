@@ -5,6 +5,8 @@ import { connect } from 'react-redux' //allows access to store/state
 import Counter from './../Counter'
 import AllTodosList from './../AllTodosList'
 import SignUp from './../SignUp'
+import SignOut from './../SignOut'
+import SignIn from './../Signin'
 import Navbar from './../../components/Navbar'
 
 class App extends Component {
@@ -15,6 +17,8 @@ class App extends Component {
         <Navbar isLoggedIn = { this.props.authenticated}/>
         <Route exact path = '/counter' component = {Counter}/>
         <Route exact path = '/alltodos' component = {AllTodosList}/>
+        <Route exact path = '/signout' component = {SignOut}/>
+        <Route exact path = '/signin' component = {SignIn}/>
         <Route exact path = '/' component = {SignUp}/>
         </Grid.Column>
       </Grid>
