@@ -11,7 +11,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     reducers, //reducers
-    {},//pre loaded state u want
+    { auth: { authenticated: localStorage.getItem('token') }},//pre loaded state u want
     composeEnhancers(applyMiddleware(reduxThunk)) //middlewares you want set up
 );
 
