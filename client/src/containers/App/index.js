@@ -7,6 +7,7 @@ import AllTodosList from './../AllTodosList'
 import SignUp from './../SignUp'
 import SignOut from './../SignOut'
 import SignIn from './../SignIn'
+import UserTodoList from './../UserTodoList'
 import Navbar from './../../components/Navbar'
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
         <Grid.Column style ={{ maxWidth: 700 }}>
         <Navbar isLoggedIn = { this.props.authenticated}/>
         <Route exact path = '/counter' component = {Counter}/>
+        <Route exact path = '/usertodos' component = {UserTodoList}/>
         <Route exact path = '/alltodos' component = {AllTodosList}/>
         <Route exact path = '/signout' component = {SignOut}/>
         <Route exact path = '/signin' component = {SignIn}/>
