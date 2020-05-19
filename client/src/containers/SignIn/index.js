@@ -78,7 +78,7 @@ class SignIn extends Component {
             fluid
             size='large'
             type='submit'
-            disabled={ invalid || submitting || submitFailed }
+            disabled={ submitting }
           />
         </Segment>
       </Form>

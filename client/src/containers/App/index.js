@@ -6,7 +6,7 @@ import Counter from './../Counter'
 import AllTodosList from './../AllTodosList'
 import SignUp from './../SignUp'
 import SignOut from './../SignOut'
-import SignIn from './../Signin'
+import SignIn from './../SignIn'
 import Navbar from './../../components/Navbar'
 
 class App extends Component {
