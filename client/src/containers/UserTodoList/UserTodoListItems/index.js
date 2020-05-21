@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, List, Button } from 'semantic-ui-react';
 
 export default (props) => {
-  if (props.todo.length === 0) {
+  if (props.todos.length === 0) {
     return <Header content='No Todos yet. Please add a Todo'/>
   } else {
     return props.todos.map(({_id, completed, text}) => {
