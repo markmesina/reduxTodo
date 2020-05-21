@@ -25,3 +25,6 @@ export const AUTH_USER_ERROR = 'AUTH_USER_ERROR';
 //Add User todos section
 export const ADD_TODO = 'ADD_TODO';
 export const ADD_TODO_ERROR = 'ADD_TODO_ERROR';
+
+//update user todo by ID
+export const UPDATE_TODO_BY_ID_ERROR = 'UPDATE_TODO_BY_ID_ERROR';

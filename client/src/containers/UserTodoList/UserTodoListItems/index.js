@@ -12,7 +12,7 @@ export default (props) => {
            <p style={{ textDecoration: completed ? 'line-through' : 'none', fontSize: '20px' }}>{text}</p>
           </List.Content>
           <List.Content floated= 'right'>
-            <Button color='blue' content = 'Mark as Complete' size='small'/>
+            <Button color='blue' content = 'Mark as Completed' size='small'/>
           </List.Content>
         </List.Item>
       );
