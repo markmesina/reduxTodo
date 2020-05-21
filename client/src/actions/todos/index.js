@@ -21,14 +21,14 @@ export const getAllTodos = () => {
     }
 };
 
-export const getUserTodos =() => async dispatch => {
+export const getUserTodos = () => async dispatch => {
     try {
-        const { data } = await axios.get('/api/user/todos');
-        dispatch({ type: GET_USER_TODOS, payload: data });
+      const { data } = await axios.get('/api/user/todos', { headers: { 'authorization': localStorage.getItem('token')} });
+      dispatch({ type: GET_USER_TODOS, payload: data });
     } catch (e) {
-        dispatch({ type: GET_ALL_TODOS_ERROR, serverError: e, clientError: 'Something went wrong, please refresh the page and try again'  })
+      dispatch({ type: GET_USER_TODOS_ERROR, serverError: e, userError: 'Please refresh the page and try again' });
     }
-}
+  };
 
 // export const getAllTodos = () => async dispatch => {
 //     try {

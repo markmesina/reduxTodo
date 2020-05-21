@@ -60,4 +60,21 @@ module.exports = {
       return res.status(403).json({ e });
     }
   },
+
+  addTodo: async (req, res) => {
+    console.log('im hit', req.body);
+    const { text } = req.body;
+    if(!text) {
+      return res.status(400).json({ error: ' You must provide text' });
+
+    }
+    try {
+      const newTodo = await new Todo({ text, user: req.user._id }).save();
+      req.user.todos.push(newTodo); //pushes new todo into user's todo property
+      await req.user.save(); //saves todo inside the user model
+      return res.status(200).json(newTodo);
+    } catch (e) {
+      return res.status(403).json({ e });
+    }
+  },
 };
