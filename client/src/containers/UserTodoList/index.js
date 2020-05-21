@@ -5,7 +5,7 @@ import { Header, Form, Segment, Message, List, Pagination, Button } from 'semant
 import { compose } from 'redux'; //make our export default cleaner
 import axios from 'axios';
 import UserTodoListItems from './UserTodoListItems'
-import { getUserTodos } from './../../actions/todos';
+import { getUserTodos, updateTodoCompletedById } from './../../actions/todos';
 import { ADD_TODO_ERROR, ADD_TODO } from './../../actions/types';
 
 class UserTodoList extends Component {
@@ -80,7 +80,9 @@ class UserTodoList extends Component {
           </Segment>
         </Form>
         <List animated divided selection>
-          <UserTodoListItems todos={this.props.todos.slice(this.state.start, this.state.end)}/>
+          <UserTodoListItems 
+          todos={this.props.todos.slice(this.state.start, this.state.end)}
+          handleUpdate = {this.props.updateTodoCompletedById} />
         </List>
         {
           this.props.todos.length <= 9 ? 
@@ -118,10 +120,10 @@ function mapStateToProps({ todos: { userTodos, getUserTodosServerError, getUserT
   };
 }
 
-export default  reduxForm({ form: 'addTodo' })(connect(mapStateToProps,{ getUserTodos }) (UserTodoList));
+export default  reduxForm({ form: 'addTodo' })(connect(mapStateToProps,{ getUserTodos, updateTodoCompletedById }) (UserTodoList));
 
 
 // export default compose(
 //   reduxForm({ form: 'addTodo' }),
-//   connect(mapStateToProps, { getUserTodos })
+//   connect(mapStateToProps, { getUserTodos, updateTodoCompletedById })
 // )(UserTodoList);
