@@ -7,6 +7,7 @@ import axios from 'axios';
 import UserTodoListItems from './UserTodoListItems'
 import { getUserTodos, updateTodoCompletedById, deleteTodoById } from './../../actions/todos';
 import { ADD_TODO_ERROR, ADD_TODO } from './../../actions/types';
+import requireAuth from './../../hoc/requireAuth';
 
 class UserTodoList extends Component {
 
@@ -127,5 +128,6 @@ function mapStateToProps({ todos: { userTodos, getUserTodosServerError, getUserT
 
 export default compose(
   reduxForm({ form: 'addTodo' }),
-  connect(mapStateToProps, { getUserTodos, updateTodoCompletedById, deleteTodoById })
+  connect(mapStateToProps, { getUserTodos, updateTodoCompletedById, deleteTodoById }),
+  requireAuth
 )(UserTodoList);
