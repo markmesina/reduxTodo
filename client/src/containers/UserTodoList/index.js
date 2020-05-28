@@ -5,7 +5,7 @@ import { Header, Form, Segment, Message, List, Pagination, Button } from 'semant
 import { compose } from 'redux'; //make our export default cleaner
 import axios from 'axios';
 import UserTodoListItems from './UserTodoListItems'
-import { getUserTodos, updateTodoCompletedById } from './../../actions/todos';
+import { getUserTodos, updateTodoCompletedById, deleteTodoById } from './../../actions/todos';
 import { ADD_TODO_ERROR, ADD_TODO } from './../../actions/types';
 
 class UserTodoList extends Component {
@@ -82,7 +82,8 @@ class UserTodoList extends Component {
         <List animated divided selection>
           <UserTodoListItems 
           todos={this.props.todos.slice(this.state.start, this.state.end)}
-          handleUpdate = {this.props.updateTodoCompletedById} />
+          handleUpdate = {this.props.updateTodoCompletedById}
+          handleDelete = {this.props.deleteTodoById} />
         </List>
         {
           this.props.todos.length <= 9 ? 
@@ -112,18 +113,19 @@ class UserTodoList extends Component {
 // }
 
 
-function mapStateToProps({ todos: { userTodos, getUserTodosServerError, getUserTodosClientError}}) {
+function mapStateToProps({ todos: { userTodos, getUserTodosServerError, getUserTodosClientError, deleteTodoByIdError }}) {
   return {
     todos: userTodos,
     clientError: getUserTodosClientError,
-    serverError: getUserTodosServerError
+    serverError: getUserTodosServerError,
+    deleteTodoByIdError,
   };
 }
 
-export default  reduxForm({ form: 'addTodo' })(connect(mapStateToProps,{ getUserTodos, updateTodoCompletedById }) (UserTodoList));
+// export default  reduxForm({ form: 'addTodo' })(connect(mapStateToProps,{ getUserTodos, updateTodoCompletedById, deleteTodoById }) (UserTodoList));
 
 
-// export default compose(
-//   reduxForm({ form: 'addTodo' }),
-//   connect(mapStateToProps, { getUserTodos, updateTodoCompletedById })
-// )(UserTodoList);
+export default compose(
+  reduxForm({ form: 'addTodo' }),
+  connect(mapStateToProps, { getUserTodos, updateTodoCompletedById, deleteTodoById })
+)(UserTodoList);

@@ -28,3 +28,6 @@ export const ADD_TODO_ERROR = 'ADD_TODO_ERROR';
 
 //update user todo by ID
 export const UPDATE_TODO_BY_ID_ERROR = 'UPDATE_TODO_BY_ID_ERROR';
+
+//delete user todo by ID
+export const DELETE_TODO_BY_ID_ERROR = 'DELETE_TODO_BY_ID_ERROR';

@@ -14,7 +14,8 @@ export default (props) => (
     <Modal.Actions>
       <Button
         fluid
-        negative >
+        negative 
+        onClick = { () => props.handleDelete(props.id) }>
       <Icon name='remove'/> Are you sure you want to delete?
       </Button>
     </Modal.Actions>
